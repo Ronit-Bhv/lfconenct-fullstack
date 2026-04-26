@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Store</title>
+  <link rel="stylesheet" href="assignment-3.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <h1 class="logo">OnlineStore</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+      <button type="button" class="nav-promo-btn" id="openPromo">Promo</button>
+    </nav>
+  </div>
+</header>
+
+<div class="promo-overlay" id="promoOverlay" hidden>
+  <section class="promo-ui">
+    <h2>New Launch</h2>
+    <p class="promo-text">Explore Offer</p>
+    <article class="promo-card">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80" alt="Featured promo product">
+      <p>Hover over this card</p>
+    </article>
+    <button type="button" class="promo-close-btn" id="closePromo">
+      <span class="close-text">Close</span>
+      <span class="promo-loader btn-loader" aria-hidden="true"></span>
+    </button>
+  </section>
+</div>
+
+<section class="carousel-wrap">
+  <div class="section-heading">
+    <h2>Featured This Week</h2>
+  </div>
+
+  <div class="carousel">
+    <button class="carousel-btn prev" type="button" aria-label="Previous slide">&#10094;</button>
+    <button class="carousel-btn next" type="button" aria-label="Next slide">&#10095;</button>
+
+    <div class="slides">
+
+      <article class="slide">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&auto=format&fit=crop&q=80" alt="Smartphone">
+        <div class="slide-content">
+          <h3>Smartphone</h3>
+          <p>Premium performance and sleek design</p>
+        </div>
+      </article>
+
+      <article class="slide">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=900&auto=format&fit=crop&q=80" alt="Camera">
+        <div class="slide-content">
+          <h3>Camera</h3>
+          <p>Capture moments in stunning clarity</p>
+        </div>
+      </article>
+
+      <article class="slide">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=900&auto=format&fit=crop&q=80" alt="Laptop">
+        <div class="slide-content">
+          <h3>Laptop</h3>
+          <p>Powerful and lightweight for productivity</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-heading">
+    <h2>Popular Products</h2>
+  </div>
+
+  <div class="products-layout">
+    <aside class="filter-sidebar" aria-label="Product Filters">
+      <h3>Filter</h3>
+      <label><input type="checkbox"> Under $50</label>
+      <label><input type="checkbox"> In Stock</label>
+      <label><input type="checkbox"> Top Rated</label>
+      <label><input type="checkbox"> New Arrivals</label>
+    </aside>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80" alt="Wireless headphones">
+        <div class="product-info">
+          <h3>Wireless Headphones</h3>
+          <p>Comfortable sound for everyday use</p>
+          <div class="product-bottom">
+            <span>$50</span>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=600&auto=format&fit=crop&q=80" alt="Smart watch">
+        <div class="product-info">
+          <h3>Smart Watch</h3>
+          <p>Track your day with style</p>
+          <div class="product-bottom">
+            <span>$35</span>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=80" alt="Desktop setup">
+        <div class="product-info">
+          <h3>Desk Setup</h3>
+          <p>Minimal workspace for creators</p>
+          <div class="product-bottom">
+            <span>$120</span>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?w=600&auto=format&fit=crop&q=80" alt="Bluetooth speaker">
+        <div class="product-info">
+          <h3>Bluetooth Speaker</h3>
+          <p>Portable audio with rich bass</p>
+          <div class="product-bottom">
+            <span>$40</span>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <p>© 2026 OnlineStore. All rights reserved.</p>
+</footer>
+
+<script>
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelector('.slides');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const openPromo = document.querySelector('#openPromo');
+  const closePromo = document.querySelector('#closePromo');
+  const promoOverlay = document.querySelector('#promoOverlay');
+  const slideCount = document.querySelectorAll('.slide').length;
+  const autoMoveMs = 3500;
+  let currentIndex = 0;
+  let autoPlayId;
+
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function moveNextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateCarousel();
+  }
+
+  function startAutoPlay() {
+    autoPlayId = setInterval(moveNextSlide, autoMoveMs);
+  }
+
+  function stopAutoPlay() {
+    clearInterval(autoPlayId);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', moveNextSlide);
+
+  carousel.addEventListener('mouseenter', stopAutoPlay);
+  carousel.addEventListener('mouseleave', startAutoPlay);
+
+  openPromo.addEventListener('click', () => {
+    closePromo.classList.remove('is-loading');
+    closePromo.disabled = false;
+    promoOverlay.hidden = false;
+  });
+
+  closePromo.addEventListener('click', () => {
+    closePromo.classList.add('is-loading');
+    closePromo.disabled = true;
+
+    setTimeout(() => {
+      promoOverlay.hidden = true;
+      closePromo.classList.remove('is-loading');
+      closePromo.disabled = false;
+    }, 900);
+  });
+
+  promoOverlay.addEventListener('click', (event) => {
+    if (event.target === promoOverlay) {
+      promoOverlay.hidden = true;
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      promoOverlay.hidden = true;
+    }
+  });
+
+  startAutoPlay();
+</script>
+
+</body>
+</html>
