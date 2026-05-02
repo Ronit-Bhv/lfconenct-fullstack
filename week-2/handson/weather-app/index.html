@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <main class="app">
-        <h1>Weather Finder</h1>
-        <p>Search city weather in real time.</p>
-        <label for="city-input">City</label>
-        <input id="city-input" type="text" placeholder="Kathmandu" />
-        <button id="search-btn" type="button">Search</button>
+        <header>
+            <h1>Weather Finder</h1>
+            <p>Search city weather in real time.</p>
+        </header>
 
-        <p id="status" aria-live="polite">Enter a city and click search.</p>
-        <section id="weather-result" aria-live="polite">
-            <h2>City name</h2>
-            <p>Temperature: --</p>
-            <p>Condition: --</p>
+        <div class="search-box">
+            <label for="city-input">City</label>
+            <div class="input-group">
+                <input id="city-input" type="text" placeholder="Kathmandu" autocomplete="off" />
+                <button id="search-btn" type="button">Search</button>
+            </div>
+        </div>
+
+        <p id="status" class="status" aria-live="polite">Enter a city and click search.</p>
+
+        <section id="weather-result" class="weather-result" aria-live="polite" hidden>
+            <img id="weather-icon" alt="Weather icon" />
+            <h2 id="city-name">City name</h2>
+            <p id="temperature" class="temp">--</p>
+            <p id="condition" class="condition">--</p>
+            <p id="humidity" class="humidity">Humidity: --</p>
         </section>
-
     </main>
 
     <script src="script.js"></script>
