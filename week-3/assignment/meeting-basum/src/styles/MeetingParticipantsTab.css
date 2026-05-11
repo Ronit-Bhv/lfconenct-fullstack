@@ -1,0 +1,37 @@
+.participants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #f3f4f6;
+  background: #fafafa;
+}
+
+.participant-name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.participant-role {
+  font-size: 13px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.participant-role.host {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.participant-role.participant {
+  background: #f3f4f6;
+  color: #6b7280;
+}
