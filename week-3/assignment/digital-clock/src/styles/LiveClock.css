@@ -1,0 +1,23 @@
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.clock-face {
+  font-family: monospace;
+  font-size: 6rem;
+  text-align: center;
+  border: 8px solid cyan;
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.clock-ampm {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
