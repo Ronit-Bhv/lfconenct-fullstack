@@ -1,0 +1,15 @@
+[build]
+  # Vite root is ./client; outDir is ../dist → built assets land at repo-root/dist
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS     = "--frozen-lockfile"
+
+# SPA fallback — redirect every unmatched path back to index.html
+# so React Router handles routing without a server-side 404.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

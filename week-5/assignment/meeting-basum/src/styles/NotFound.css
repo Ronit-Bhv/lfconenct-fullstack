@@ -1,0 +1,36 @@
+.not-found-container {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.not-found-code {
+  font-size: 120px;
+  font-weight: 800;
+  color: #fca5a5;
+  margin-bottom: 16px;
+}
+
+.not-found-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.not-found-message {
+  font-size: 22px;
+  color: #4b5563;
+  margin-bottom: 40px;
+}
+
+.not-found-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+}
